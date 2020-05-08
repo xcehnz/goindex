@@ -264,19 +264,21 @@ function file_code(path){
 // 文件展示 视频 |mp4|webm|avi|
 function file_video(path){
 	var url = window.location.origin + path;
-	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="potplayer://${url}"><i class="mdui-icon material-icons">&#xe038;</i>在 potplayer 中播放</a>`;
+	console.log('userAgent: ', navigator.userAgent);
+	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="potplayer://${url}"><i class="mdui-icon material-icons">&#xe038;</i>在 PotPlayer 中播放</a>`;
 	//Android端
 	if (/(Android)/i.test(navigator.userAgent)) {
-	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="intent:${url}#Intent;package=com.mxtech.videoplayer.pro;S.title=${path};end"><i class="mdui-icon material-icons">&#xe039;</i>在mxplayer中播放</a>`;
-	}
-	//iOS端
-	if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">&#xe039;</i>在nPlayer中播放</a>`;
+	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="intent:${url}#Intent;package=com.mxtech.videoplayer.pro;S.title=${path};end"><i class="mdui-icon material-icons">&#xe039;</i>在 MXPlayer 中播放</a>`;
 	}
 	//Mac端
 	if (/(Mac OS)/i.test(navigator.userAgent)) {
-	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">&#xe039;</i>在IINA中播放</a>`;
+	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">&#xe039;</i>在 IINA 中播放</a>`;
     }
+	//iOS端
+	if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">&#xe039;</i>在 nPlayer 中播放</a>`;
+	}
+
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
