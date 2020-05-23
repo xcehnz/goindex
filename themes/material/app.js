@@ -56,6 +56,14 @@ function nav(path){
             html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="${p}">${n}</a>`;
         }
     }
+    var searchBar = `
+<div class="mdui-toolbar-spacer"></div>
+<div class="mdui-textfield mdui-textfield-expandable mdui-float-right">
+  <button class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>
+  <input class="mdui-textfield-input" type="text" placeholder="Search"/>
+  <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
+</div>`;
+    html += searchBar;
     $('#nav').html(html);
 }
 
