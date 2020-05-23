@@ -20,9 +20,9 @@ function init(){
 }
 
 function render(path){
-	// if(path.indexOf("?") > 0){
-	// 	path = path.substr(0,path.indexOf("?"));
-	// }
+	if(path.indexOf("?") > 0){
+		path = path.substr(0,path.indexOf("?"));
+	}
     title(path);
     nav(path);
     if(path.substr(-1) == '/'){
@@ -122,7 +122,14 @@ function list_files(path,files){
     html = "";
     for(i in files){
         var item = files[i];
+        console.log('item: ', item);
         var p = path+item.name+'/';
+        var parentId = null;
+        if (item.parents && item.parents[-1]){
+            parentId = item.parents[-1];
+            p = parentId;
+        }
+
         if(item['size']==undefined){
             item['size'] = "";
         }
@@ -141,6 +148,9 @@ function list_files(path,files){
 	        </li>`;
         }else{
             var p = path+item.name;
+            if (parentId){
+                p = parentId + '/' + item.name
+            }
             var c = "file";
             if(item.name == "README.md"){
                  get_file(p, item, function(data){
