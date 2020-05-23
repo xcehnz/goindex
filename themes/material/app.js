@@ -126,8 +126,8 @@ function list_files(path,files){
         var p = path+item.name+'/';
         var parentId = null;
         console.log('item parents: ', item.parents, item.parents[-1]);
-        if (item.parents && item.parents[-1]){
-            parentId = item.parents[-1];
+        if (item.parents && item.parents.pop()){
+            parentId = item.parents.pop();
             p = parentId;
         }
 
