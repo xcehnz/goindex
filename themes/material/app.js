@@ -122,12 +122,12 @@ function list_files(path,files){
     html = "";
     for(i in files){
         var item = files[i];
-        console.log('item: ', item);
+        // console.log('item: ', item);
         var p = path+item.name+'/';
         var parentId = null;
-        console.log('item parents: ', item.parents, item.parents[-1]);
-        if (item.parents && item.parents.pop()){
-            parentId = item.parents.pop();
+        // console.log('item parents: ', item.parents, item.parents[item.parents.length - 1]);
+        if (item.parents && item.parents[item.parents.length - 1]){
+            parentId = item.parents[item.parents.length - 1];
             p = parentId;
         }
 
@@ -283,7 +283,7 @@ function file_code(path){
 // 文件展示 视频 |mp4|webm|avi|
 function file_video(path){
 	var url = window.location.origin + path;
-	console.log('userAgent: ', navigator.userAgent);
+	// console.log('userAgent: ', navigator.userAgent);
 	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="potplayer://${url}"><i class="mdui-icon material-icons">&#xe038;</i>在 PotPlayer 中播放</a>`;
 	//Android端
 	if (/(Android)/i.test(navigator.userAgent)) {
